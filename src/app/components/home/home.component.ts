@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       data: {
 
       },
-      width: "400px"
+      width: "500px"
     });
   }
 

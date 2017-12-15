@@ -16,6 +16,7 @@ import { AngularMaterialModule } from './modulos/angular-material/angular-materi
 import { LayoutComponent } from './components/layout/layout.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { NuevaPuertaDialogoComponent } from './dialogos/nueva-puerta-dialogo/nueva-puerta-dialogo.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     NuevoProyectoDialogoComponent,
     LayoutComponent,
     MenuComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    NuevaPuertaDialogoComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
   ],
 
   entryComponents: [
-    NuevoProyectoDialogoComponent
+    NuevoProyectoDialogoComponent,
+    NuevaPuertaDialogoComponent
   ],
 
 
