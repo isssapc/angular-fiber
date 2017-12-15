@@ -1,49 +1,70 @@
-<div class="container">
+<div class="container py-5">
   <div class="row">
-    <div class="col-12">
-      <div class="card my-5">
-        <div class="card-body">
+    <div class="col">
 
 
-          <div class="row">
-            <div class="col-sm-6">
-              <mat-list class="my-5">
+      <mat-card>
 
-                <mat-list-item>                 
-                  <button type="button" class="btn btn-outline-secondary btn-lg btn-block">Nuevo Proyecto</button>
-                </mat-list-item>
 
-                <mat-list-item>                
-                  <button type="button" class="btn btn-outline-secondary btn-lg btn-block">Abrir</button>
-                </mat-list-item>
+        <div class="row">
 
-                <mat-list-item>    
-                  <button type="button" class="btn btn-outline-secondary btn-lg btn-block">Catálogos</button>
-                </mat-list-item>
+          <div class="col-12 col-sm-6 mb-5">
 
-              </mat-list>
-            </div>
-            <div class="col-sm-6">
-              <h2>
-                <span>Proyectos Recientes</span>
-              </h2>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <a href="#">Proyecto 1</a>
-                </li>
-                <li class="list-group-item"><a href="#">Proyecto 2</a></li>
-                <li class="list-group-item"><a href="#">Proyecto 3</a></li>
-                <li class="list-group-item"><a href="#">Proyecto 4</a></li>
-                <li class="list-group-item"><a href="#">Proyecto 5</a></li>
-              </ul>
-            </div>
+
+
+            <h5 class="list-header">Archivo</h5>
+            <mat-nav-list>
+              <!--   <h3 matSubheader>Archivo</h3> -->
+
+
+              <mat-list-item>
+                <i matListIcon class="fa fa-file list-icon"></i>
+                <a matLine (click)="createProyecto()">Nuevo Proyecto</a>
+              </mat-list-item>
+
+              <mat-list-item>
+                <i matListIcon class="fa fa-folder-open list-icon"></i>
+                <a matLine [routerLink]="['/proyectos']">Abrir...</a>
+              </mat-list-item>
+
+              <mat-list-item>
+                <i matListIcon class="fa fa-database list-icon"></i>
+                <a matLine [routerLink]="['/catalogos']">Catálogos</a>
+              </mat-list-item>
+
+            </mat-nav-list>
+
+
+
+          </div>
+
+          <div class="col-12 col-sm-6">
+
+            <h5 class="list-header">Proyectos Recientes</h5>
+
+            <mat-nav-list>
+              <!--  <h3 matSubheader>Proyectos recientes</h3> -->
+
+              <mat-list-item *ngFor="let p of proyectos" class="my-2">
+                <a matLine [routerLink]="['/proyecto']" >{{p.nombre}}
+                  <span class="text-muted list-date">{{p.fecha}}</span>
+                </a>
+
+              </mat-list-item>
+
+
+            </mat-nav-list>
+
+
           </div>
 
         </div>
-      </div>
+
+
+      </mat-card>
+
+
+
     </div>
   </div>
 </div>
-
-
-

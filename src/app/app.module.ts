@@ -13,6 +13,9 @@ import { CatalogosComponent } from './components/catalogos/catalogos.component';
 import { NuevoProyectoDialogoComponent } from './dialogos/nuevo-proyecto-dialogo/nuevo-proyecto-dialogo.component';
 import { RoutingModule } from './app.routing';
 import { AngularMaterialModule } from './modulos/angular-material/angular-material.module';
+import { LayoutComponent } from './components/layout/layout.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { AngularMaterialModule } from './modulos/angular-material/angular-materi
     ProyectosComponent,
     ProyectoComponent,
     CatalogosComponent,
-    NuevoProyectoDialogoComponent
+    NuevoProyectoDialogoComponent,
+    LayoutComponent,
+    MenuComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,78 @@
-<p>
-  proyecto works!
-</p>
+<mat-tab-group>
+  <mat-tab label="Muebles">
+    <div class="container py-3">
+
+
+      <!--       <mat-card class="gabinete-card">
+        <mat-card-header>
+          <mat-card-title>GABINETE RINCONERO CIEGO 100X60</mat-card-title>
+          <mat-card-subtitle>Subtitulo</mat-card-subtitle>
+        </mat-card-header>
+        <img md-card-image width="300px" src="assets/img/gabinete.jpg" alt="gabinete">
+        <mat-card-content>
+          <div>Contenido</div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button>
+            <i class="fa fa-plus"></i>
+          </button>
+          <button mat-raised-button>
+            <i class="fa fa-minus"></i>
+          </button>
+        </mat-card-actions>
+      </mat-card> -->
+
+      <div class="card-columns">
+
+        <div class="card mat-elevation-z2" *ngFor="let gabinete of gabinetes">
+          <img class="card-img-top" src="assets/img/gabinete.jpg" alt="Card image cap">
+
+
+          <span class="card-counter badge badge-danger" *ngIf="gabinete.count">{{gabinete.count}}</span>
+
+          <div class="card-body">
+            <h6 class="card-title">GABINETE RINCNERO CIEGO DERECHO</h6>
+            <div class="mb-2 text-medidas">
+              <div>Ancho: 90 cm</div>
+              <div>Largo: 100cm </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <button (click)="gabinete.count= gabinete.count -1" class="btn btn-outline-info btn-block">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <div class="col">
+                <button (click)="gabinete.count= gabinete.count +1" class="btn btn-outline-info btn-block">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+  </mat-tab>
+  <mat-tab label="Puertas">
+    <div class="container">
+      puertas
+    </div>
+  </mat-tab>
+  <mat-tab label="Pedido">
+    <div class="container">
+      lista de muebles
+    </div>
+  </mat-tab>
+  <mat-tab label="Vista">
+    <div class="container">
+      vista de la cocina
+    </div>
+  </mat-tab>
+</mat-tab-group>

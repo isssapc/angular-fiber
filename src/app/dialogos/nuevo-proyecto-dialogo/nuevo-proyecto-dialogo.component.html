@@ -1,3 +1,12 @@
-<p>
-  nuevo-proyecto-dialogo works!
-</p>
+<h2 mat-dialog-title>Nuevo Proyecto</h2>
+<mat-dialog-content>
+
+  Nombre Cliente Fecha
+
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-center">
+  
+    <button mat-raised-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Crear</button>
+
+</mat-dialog-actions>
