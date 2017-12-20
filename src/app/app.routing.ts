@@ -7,6 +7,8 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { CatalogosComponent } from './components/catalogos/catalogos.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 
 
@@ -28,6 +30,8 @@ export const ROUTES: Routes = [
             { path: 'proyectos', component: ProyectosComponent },
             { path: 'proyecto', component: ProyectoComponent },
             { path: 'catalogos', component: CatalogosComponent },
+            { path: 'usuarios', component: UsuariosComponent },
+            { path: 'perfil', component: PerfilComponent },
         ]
     },
 
