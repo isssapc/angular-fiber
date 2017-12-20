@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material';
 export class ProyectoComponent implements OnInit {
 
   gabinetes: Gabinete[];
+  enColumnas = false;
+  valor=true;
 
   constructor(
     private dialog: MatDialog

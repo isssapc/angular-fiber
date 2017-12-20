@@ -17,6 +17,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NuevaPuertaDialogoComponent } from './dialogos/nueva-puerta-dialogo/nueva-puerta-dialogo.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { NuevaPuertaDialogoComponent } from './dialogos/nueva-puerta-dialogo/nue
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule

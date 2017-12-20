@@ -2,27 +2,7 @@
   <mat-tab label="Muebles">
     <div class="container py-3">
 
-
-      <!--       <mat-card class="gabinete-card">
-        <mat-card-header>
-          <mat-card-title>GABINETE RINCONERO CIEGO 100X60</mat-card-title>
-          <mat-card-subtitle>Subtitulo</mat-card-subtitle>
-        </mat-card-header>
-        <img md-card-image width="300px" src="assets/img/gabinete.jpg" alt="gabinete">
-        <mat-card-content>
-          <div>Contenido</div>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button>
-            <i class="fa fa-plus"></i>
-          </button>
-          <button mat-raised-button>
-            <i class="fa fa-minus"></i>
-          </button>
-        </mat-card-actions>
-      </mat-card> -->
-
-      <div class="card-columns">
+      <div class="card-columns" *ngIf="enColumnas">
 
         <div class="card mat-elevation-z2" *ngFor="let gabinete of gabinetes">
           <img class="card-img-top" src="assets/img/gabinete.jpg" alt="Card image cap">
@@ -53,6 +33,53 @@
           </div>
         </div>
 
+      </div>
+
+      <div *ngIf="!enColumnas">
+
+        <div class="card my-3" *ngFor="let gabinete of gabinetes">
+
+          <div class="row">
+
+            <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
+
+              <!--  <div [style.background-image]="'url(assets/img/gabinete.jpg)'" style="height: 306px; width:100%; background-size: cover; background-position: 50% 50%;display:block;"></div> -->
+              <img src="assets/img/gabinete.jpg" width="100%" alt="">
+              <span class="card-counter badge badge-danger mr-3 d-block d-md-none" *ngIf="gabinete.count">{{gabinete.count}}</span>
+            </div>
+
+            <div class="col-12 col-md-7">
+
+              <span class="card-counter badge badge-danger mr-md-3 d-none d-md-block" *ngIf="gabinete.count">{{gabinete.count}}</span>
+
+              <div class="p-3">
+
+                <h6 class="">GABINETE RINCNERO CIEGO DERECHO</h6>
+                <div class="mb-2 text-medidas">
+                  <div>Ancho: 90 cm</div>
+                  <div>Largo: 100cm </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <button (click)="gabinete.count= gabinete.count -1" class="btn btn-outline-info btn-block">
+                      <i class="fa fa-minus"></i>
+                    </button>
+                  </div>
+                  <div class="col">
+                    <button (click)="gabinete.count= gabinete.count +1" class="btn btn-outline-info btn-block">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
 
 
       </div>
@@ -62,9 +89,14 @@
   </mat-tab>
   <mat-tab label="Puertas">
     <div class="container">
-      <button type="button" class="btn btn-primary" (click)="createPuerta()">Nueva Puerta</button>
 
-      <div class="card-columns">
+      <button tabindex="-1" (click)="createPuerta()" mat-fab style="position: fixed; bottom:20px; right:20px; z-index:1020">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <!-- <button type="button" class="btn btn-primary" (click)="createPuerta()">Nueva Puerta</button> -->
+
+      <div class="card-columns" *ngIf="enColumnas">
 
         <div class="card mat-elevation-z2" *ngFor="let gabinete of gabinetes">
           <img class="card-img-top" src="assets/img/gabinete.jpg" alt="Card image cap">
@@ -76,25 +108,51 @@
             <h6 class="card-title">GABINETE RINCNERO CIEGO DERECHO 100</h6>
             <div class="mb-2 text-medidas">
 
-              <div class="row">
-                <span class="col">P1: 50X70 cm</span>
-                <select class="form-control col"></select>
-                <div class="col">
-                  <button class="btn btn-outline-primary">
-                    <i class="fa fa-minus"></i>
-                  </button>
+
+
+              <div class="d-flex flex-column flex-md-row align-items-md-center mb-3">
+                <div class="d-flex align-items-start">
+                  <mat-checkbox></mat-checkbox>
+                  <span class="mx-2">FIJO: 50x70 cm</span>
                 </div>
+
+                <div class="mt-1 mt-md-0" style="flex-grow:1">
+                  <select class="form-control"></select>
+                </div>
+
               </div>
 
-              <div class="row">
-                <span class="col">P2: 50x70 cm</span>
-                <select class="form-control col"></select>
-                <div class="col">
-                  <button class="btn btn-outline-primary">
+
+              <div class="d-flex flex-column flex-md-row align-items-md-center mb-3">
+                <div class="d-flex align-items-start">
+                  <!--   <button class="btn btn-sm btn-outline-dark">
                     <i class="fa fa-minus"></i>
-                  </button>
+                  </button> -->
+                  <mat-checkbox></mat-checkbox>
+                  <span class="mx-2">P1: 50x70 cm</span>
                 </div>
+
+                <div class="mt-1 mt-md-0" style="flex-grow:1">
+                  <select class="form-control"></select>
+                </div>
+
               </div>
+
+
+              <div class="d-flex flex-column flex-md-row align-items-md-center mb-3">
+                <div class="d-flex align-items-start">
+                  <mat-checkbox></mat-checkbox>
+                  <span class="mx-2">P2: 50x70 cm</span>
+                </div>
+
+                <div class="mt-1 mt-md-0" style="flex-grow:1">
+                  <select class="form-control"></select>
+                </div>
+
+              </div>
+
+
+
             </div>
 
           </div>
@@ -102,7 +160,93 @@
 
 
 
-      </div>F
+      </div>
+
+      <div *ngIf="!enColumnas">
+
+        <div class="card my-3" *ngFor="let gabinete of gabinetes">
+
+          <div class="row">
+
+            <div class="col-12 col-md-5 d-flex justify-content-center align-items-center">
+
+
+              <img src="assets/img/gabinete.jpg" width="100%" alt="">
+
+            </div>
+
+            <div class="col-12 col-md-7">
+
+
+              <div class="p-3">
+
+                <h6 class="">GABINETE RINCNERO CIEGO DERECHO</h6>
+
+                <div class="mt-3">
+
+
+
+                  <div class="form-group row">
+                    <div class="col-lg-5 col-form-label">
+                      <mat-checkbox [(ngModel)]="valor" [class.text-del]="!valor">PUERTA: 45.3 x 69.8 cm</mat-checkbox>
+                      <!--     <span class="mx-2">FIJO: 45.3 x 69.8 cm</span> -->
+                    </div>
+
+                    <div class="col-lg-7">
+                      <select [disabled]="!valor" class="form-control">
+                        <optgroup label="Sólidos">
+                          <option value="">White Lily</option>
+                        </optgroup>
+                        <optgroup label="Maderas">
+                          <option value="">Wengue</option>
+                        </optgroup>
+                      </select>
+                    </div>
+
+                  </div>
+
+
+                  <div class="form-group row">
+                    <div class="col-lg-5 col-form-label">
+                      <!--   <button class="btn btn-sm btn-outline-dark">
+                              <i class="fa fa-minus"></i>
+                            </button> -->
+                      <mat-checkbox>P1: 50x70 cm</mat-checkbox>
+                      <!-- <span class="mx-2">P1: 50x70 cm</span> -->
+                    </div>
+
+                    <div class="col-lg-7">
+                      <select class="form-control"></select>
+                    </div>
+
+                  </div>
+
+
+                  <div class="form-group row">
+                    <div class="col-lg-5 col-form-label">
+                      <mat-checkbox>PUERTA: 45.3 x 69.8 cm</mat-checkbox>
+                    </div>
+                    <div class="col-lg-7">
+                      <select class="form-control"></select>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
     </div>
   </mat-tab>
   <mat-tab label="Pedido">
@@ -225,8 +369,211 @@
     </div>
   </mat-tab>
   <mat-tab label="Vista">
-    <div class="container">
-      <div class="row">
+    <!--    <div class="container"> -->
+    <div class="d-flex">
+
+      <mat-drawer-container class="drawer-container">
+        <mat-drawer mode="over" position="end" opened="false" #drawer style="background-color:blue">
+
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <div>hola mundo</div>
+          <!--         <div class="">
+            <h4>Sólidos</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Maderas</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Maderas Brillantes</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary"></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> -->
+
+
+
+        </mat-drawer>
+
+        <mat-drawer-content class="drawer-container">
+          <div class="">
+            <button (click)="drawer.toggle()">toggle drawer</button>
+            <img height="100%" src="assets/img/cocinafiber.svg" />
+          </div>
+        </mat-drawer-content>
+      </mat-drawer-container>
+    </div>
+
+    <!--    <div class="row">
         <div class="col-8">
           <img src="assets/img/cocinafiber.svg">
         </div>
@@ -342,8 +689,8 @@
             </tbody>
           </table>
         </div>
-      </div>
+      </div> -->
 
-    </div>
+    <!--  </div> -->
   </mat-tab>
 </mat-tab-group>
