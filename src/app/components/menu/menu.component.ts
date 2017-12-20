@@ -14,6 +14,8 @@ export class MenuComponent implements OnInit {
     { title: "Proyectos", route: "proyectos" },
     { title: "Catálogos", route: "catalogos" },
     { title: "Proyecto", route: "proyecto" },
+    { title: "Perfil", route: "perfil" },
+    { title: "Usuarios", route: "usuarios" },
 
   ];
 

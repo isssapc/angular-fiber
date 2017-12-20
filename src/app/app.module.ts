@@ -17,6 +17,9 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NuevaPuertaDialogoComponent } from './dialogos/nueva-puerta-dialogo/nueva-puerta-dialogo.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { CrearUsuarioDialogoComponent } from './dialogos/crear-usuario-dialogo/crear-usuario-dialogo.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import { NuevaPuertaDialogoComponent } from './dialogos/nueva-puerta-dialogo/nue
     LayoutComponent,
     MenuComponent,
     ToolbarComponent,
-    NuevaPuertaDialogoComponent
+    NuevaPuertaDialogoComponent,
+    UsuariosComponent,
+    CrearUsuarioDialogoComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,8 @@ import { NuevaPuertaDialogoComponent } from './dialogos/nueva-puerta-dialogo/nue
 
   entryComponents: [
     NuevoProyectoDialogoComponent,
-    NuevaPuertaDialogoComponent
+    NuevaPuertaDialogoComponent,
+    CrearUsuarioDialogoComponent
   ],
 
 
