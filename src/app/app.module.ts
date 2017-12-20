@@ -1,9 +1,15 @@
+//services
+import { UsuarioService } from './services/usuario.service';
+import { LineaService } from './services/linea.service';
+import { MuebleService } from './services/mueble.service';
+import { ProyectoService } from './services/proyecto.service';
+import { PuertaService } from './services/puerta.service';
+import { AuthService } from './services/auth.service';
+
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NuevoProyectoComponent } from './components/nuevo-proyecto/nuevo-proyecto.component';
@@ -21,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { CrearUsuarioDialogoComponent } from './dialogos/crear-usuario-dialogo/crear-usuario-dialogo.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+
 
 
 @NgModule({
@@ -46,7 +53,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     RoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule
-   
+
   ],
 
   entryComponents: [
@@ -56,7 +63,16 @@ import { PerfilComponent } from './components/perfil/perfil.component';
   ],
 
 
-  providers: [],
+  providers: [
+    UsuarioService,
+    LineaService,
+    MuebleService,
+    ProyectoService,
+    PuertaService,
+    AuthService,
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
