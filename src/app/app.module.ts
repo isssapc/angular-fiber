@@ -1,5 +1,5 @@
 //services
-import { UsuarioService } from './services/usuario.service';
+
 import { LineaService } from './services/linea.service';
 import { MuebleService } from './services/mueble.service';
 import { ProyectoService } from './services/proyecto.service';
@@ -27,6 +27,9 @@ import { FormsModule } from '@angular/forms';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { CrearUsuarioDialogoComponent } from './dialogos/crear-usuario-dialogo/crear-usuario-dialogo.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { UsuarioService } from './services/usuario.service';
+import { ConfigService } from './services/config.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -50,6 +53,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule
@@ -64,6 +68,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 
 
   providers: [
+    ConfigService,
     UsuarioService,
     LineaService,
     MuebleService,

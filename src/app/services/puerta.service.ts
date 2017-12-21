@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Puerta } from '../model/puerta';
 
 @Injectable()
 export class PuertaService {
@@ -15,13 +16,13 @@ export class PuertaService {
     private config: ConfigService,
     private http: HttpClient,
   ) {
-    this.url = this.config.api_url + "puerta/";
+    this.url = this.config.api_url + "puertas/";
   }
 
-  getPuertas() {
+  getPuertas(): Observable<Puerta[]> {
     return this.http.get(this.url)
       .pipe(
-      tap(response => console.log("response", response)),
+      tap((response: Puerta[]) => console.log("response", response)),
       catchError(this.handleError("getPuertas", []))
       );
   }

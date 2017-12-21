@@ -7,7 +7,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
-export class usuarioService {
+export class UsuarioService {
 
   url: string;
 
@@ -15,14 +15,14 @@ export class usuarioService {
     private config: ConfigService,
     private http: HttpClient,
   ) {
-    this.url = this.config.api_url + "usuario/";
+    this.url = this.config.api_url + "usuarios/";
   }
 
-  getusuarios() {
+  getUsuarios() {
     return this.http.get(this.url)
       .pipe(
       tap(response => console.log("response", response)),
-      catchError(this.handleError("getusuarios", []))
+      catchError(this.handleError("getUsuarios", []))
       );
   }
 

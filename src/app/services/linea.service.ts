@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Linea } from '../model/linea';
 
 @Injectable()
 export class LineaService {
@@ -18,11 +19,11 @@ export class LineaService {
     this.url = this.config.api_url + "lineas/";
   }
 
-  getLineas() {
+  getLineas(): Observable<Linea[]> {
     return this.http.get(this.url)
       .pipe(
-      tap(response => console.log("response", response)),
-      catchError(this.handleError("getLineas", []))
+      tap((response: Linea[]) => console.log("response", response)),
+      catchError(this.handleError("getMuebles", []))
       );
   }
 

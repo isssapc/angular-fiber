@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Mueble } from '../model/mueble';
 @Injectable()
 export class MuebleService {
 
@@ -15,13 +16,21 @@ export class MuebleService {
     private http: HttpClient,
   ) {
     this.url = this.config.api_url + "muebles/";
-   }
+  }
 
-  getMuebles() {
+  getMuebles(): Observable<Mueble[]> {
     return this.http.get(this.url)
       .pipe(
-      tap(response => console.log("response", response)),
+      tap((response: Mueble[]) => console.log("response", response)),
       catchError(this.handleError("getMuebles", []))
+      );
+  }
+
+  getMueblesConPuertas(): Observable<Mueble[]> {
+    return this.http.get(this.url + "get_muebles_con_puertas")
+      .pipe(
+      tap((response: Mueble[]) => console.log("response", response)),
+      catchError(this.handleError("getMueblesConPuertas", []))
       );
   }
 
