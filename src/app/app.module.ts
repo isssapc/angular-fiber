@@ -30,6 +30,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { UsuarioService } from './services/usuario.service';
 import { ConfigService } from './services/config.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AsignarLineaPuertaDialogoComponent } from './dialogos/asignar-linea-puerta-dialogo/asignar-linea-puerta-dialogo.component';
+
 
 
 
@@ -48,7 +50,9 @@ import { HttpClientModule } from '@angular/common/http';
     NuevaPuertaDialogoComponent,
     UsuariosComponent,
     CrearUsuarioDialogoComponent,
-    PerfilComponent
+    PerfilComponent,
+    AsignarLineaPuertaDialogoComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,8 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [
     NuevoProyectoDialogoComponent,
     NuevaPuertaDialogoComponent,
-    CrearUsuarioDialogoComponent
+    CrearUsuarioDialogoComponent,
+    AsignarLineaPuertaDialogoComponent
   ],
 
 

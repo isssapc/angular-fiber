@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Asignar Linea</h2>
+<mat-dialog-content>
+
+  <form class="py-1">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label" for="modelo">Linea Puerta</label>
+      <div class="col-sm-9">
+        <select class="form-control" name="modelo" id="modelo" [(ngModel)]="linea_puerta">
+          <option value="">Seleccionar...</option>
+          <option [ngValue]="linea" *ngFor="let linea of data.lineas">{{linea.modelo}}</option>
+        </select>
+      </div>
+    </div>
+
+
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-center">
+
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="linea_puerta">Asignar</button>
+
+</mat-dialog-actions>

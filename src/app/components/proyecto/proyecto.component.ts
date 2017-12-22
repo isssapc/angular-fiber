@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NuevaPuertaDialogoComponent } from '../../dialogos/nueva-puerta-dialogo/nueva-puerta-dialogo.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import "rxjs/add/operator/switchMap";
 import { MuebleService } from '../../services/mueble.service';
@@ -9,6 +9,7 @@ import { LineaService } from '../../services/linea.service';
 import { Linea } from '../../model/linea';
 import { PuertaService } from '../../services/puerta.service';
 import { Puerta } from '../../model/puerta';
+import { AsignarLineaPuertaDialogoComponent } from '../../dialogos/asignar-linea-puerta-dialogo/asignar-linea-puerta-dialogo.component';
 
 @Component({
   selector: 'app-proyecto',
@@ -24,13 +25,16 @@ export class ProyectoComponent implements OnInit {
   loading: boolean;
   enColumnas = false;
   valor = true;
+  muebles_pedido: Mueble[] = [];
+  muebles_pedido_desglose: Mueble[] = [];
 
   constructor(
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private muebleSrv: MuebleService,
     private lineaSrv: LineaService,
-    private puertaSrv: PuertaService
+    private puertaSrv: PuertaService,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -67,6 +71,82 @@ export class ProyectoComponent implements OnInit {
       },
       width: "500px"
     });
+  }
+
+  asignarPuerta() {
+
+    console.log("Asignar Puerta");
+
+    let dialogRef = this.dialog.open(AsignarLineaPuertaDialogoComponent, {
+      data: {
+        lineas: this.lineas,
+      },
+      width: "500px"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+
+        if (result.error) {
+          this.snackBar.open(result.error, "Cerrar", {
+            duration: 2000
+          });
+        } else {
+          console.log(result);
+
+
+
+
+          this.muebles_pedido_desglose.forEach(mueble => {
+            for (let i = 0; i < mueble.puertas.length; i++) {
+              mueble.puertas[i].linea_puerta = result
+            }
+
+          });
+
+
+
+
+          this.snackBar.open("Linea Asignada", "Cerrar", {
+            duration: 2000
+          });
+        }
+
+      }
+
+
+    });
+
+  }
+
+
+
+  actualizar() {
+    console.log("actualizar");
+    this.muebles_pedido = this.muebles.filter(mueble => mueble.count > 0);
+    console.log("pedido", this.muebles_pedido);
+
+    this.muebles_pedido_desglose = [];
+
+
+    this.muebles_pedido.forEach(mueble => {
+
+      for (let i = 0; i < mueble.count; i++) {
+        let clon = Mueble.clonar(mueble);
+        clon.index = i;
+        this.muebles_pedido_desglose.push(clon);
+      }
+
+    });
+
+    console.log("desglose", this.muebles_pedido_desglose);
+
+
+  }
+
+  actualizarPedido() {
+    console.log("desglose", this.muebles_pedido_desglose);
   }
 
   sumarMueble(mueble: Mueble) {

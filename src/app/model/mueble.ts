@@ -6,10 +6,13 @@ export class Mueble {
     ancho?: string;
     altura?: string;
     fondo?: string;
-    count?:number;
+    precio?: string;
+    count?: number;
 
-    puertas?:any;
-    test?:any;
+    index?: number;
+
+    puertas?: any;
+
 
 
 
@@ -22,9 +25,14 @@ export class Mueble {
         copia.ancho = mueble.ancho;
         copia.altura = mueble.altura;
         copia.fondo = mueble.fondo;
+        copia.precio = mueble.precio;
 
 
         return copia;
+    }
+
+    public static clonar(mueble: Mueble): Mueble {
+        return JSON.parse(JSON.stringify(mueble));
     }
 
 
@@ -38,6 +46,7 @@ export class Mueble {
         copia.ancho = this.ancho;
         copia.altura = this.altura;
         copia.fondo = this.fondo;
+        copia.precio = this.precio;
 
         return copia;
 

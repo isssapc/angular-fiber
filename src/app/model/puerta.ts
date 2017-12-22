@@ -4,6 +4,7 @@ export class Puerta {
     id_mueble?: string;
     ancho?: string;
     altura?: string;
+    linea_puerta?:any;
 
 
     public static copiar(puerta: Puerta): Puerta {
